@@ -1,33 +1,18 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class City{
-    String City;
-    Connection[] connections;
+    String cityName;
+    Connection[] connections = new Connection[5];
 
-    public City(String City){
-        this.City = City;
+    public City(String cityName){
+        this.cityName = cityName;
     }
 
-    public void addConnection(Connection input){
+    public void addConnection(String row, Integer distance){
         int i = 0;
-        if(this.City == null){
-            this.connections = new Connection[5];
-            this.connections[0] = input;
-        } else {
-            while(this.connections[i] != null){
-                i++;
-            }
-        }
-    }
-
-    public void filereader(){
-        try{
-        BufferedReader reader = new BufferedReader(new FileReader("trains.csv"));
-        System.out.println(reader.readLine());
-        } catch (IOException e){
-            System.out.println("File not found");
+        
+        while(this.connections[i] != null){
+            i++;
+            connections[i].City.cityName = row;
+            connections[i].distanceInMinutes = distance;
         }
     }
 }

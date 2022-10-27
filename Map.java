@@ -4,9 +4,7 @@ import java.io.FileReader;
 public class Map {
     public City[] cities;
     private final int mod = 541;
-    private int emptyfill = 0;
-    private int nothing1 = 0;
-    private int step = 0;
+
 
     public Map(String file) {
         cities = new City[mod];
@@ -43,7 +41,7 @@ public class Map {
 
     // takes cityname. returns city if found in list. otherwise creates new city and
     // returns that.
-    private City lookup(String cityName) {
+    public City lookup(String cityName) {
         int i = hash(cityName);
         if (cities[i] != null && cities[i].cityName.equals(cityName)) {
             return cities[i];

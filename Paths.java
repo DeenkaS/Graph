@@ -1,11 +1,13 @@
-public class Naive {
-    
+public class Paths {
+    static City[] path = new City[54];
+    static int sp = 0;
 
     public static void main(String[] args) {
         Map map = new Map("trains.csv");
         String from = "Malmö";
         String to = "Stockholm";
-        Integer max = Integer.valueOf(args[0]);
+        Paths path = new Paths();
+        Integer max = Integer.valueOf(1000000);
         long t0 = System.nanoTime();
         Integer dist = shortest(map.lookup(from), map.lookup(to), max);
         long time = (System.nanoTime() - t0) / 1_000_000;
@@ -19,6 +21,12 @@ public class Naive {
             return 0;
         Integer shrt = null;
 
+        for (int i = 0; i < sp; i++) {
+            if (path[i] == from)
+                return null;
+        }
+        path[sp++] = from;
+
         for (int i = 0; i < from.connections.length; i++) {
             if (from.connections[i] != null) {
                 Connection conn = from.connections[i];
@@ -28,6 +36,11 @@ public class Naive {
 
             }
         }
+        path[sp--] = null;
         return shrt;
     }
+    
+  
+
+
 }

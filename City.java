@@ -12,8 +12,7 @@ public class City{
         while(this.connections[i] != null){
             i++;
         }
-        connections[i].City = city;
-        connections[i].distanceInMinutes = distance;
+        connections[i] = new Connection(city, distance);
     }
 }
 

@@ -26,7 +26,7 @@ public class Map {
 
             }
         } catch (Exception e) {
-            System.out.println(" file " + file + " not found or corrupt");
+            System.out.println(e);
         }
     }
 

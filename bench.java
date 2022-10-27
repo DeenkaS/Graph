@@ -6,11 +6,11 @@ public class bench {
         for(int i = 0; i < 541; i++){
             if(test.cities[i] != null){
                 System.out.print("City nr " + k + " : " + test.cities[i].cityName + " connects to ");
-                // for(int j = 0; j < 1; j++){
-                //     if(test.cities[i].connections[j].City.cityName != null){
-                //         System.out.println(test.cities[i].connections[j].City.cityName + ", ");
-                //     }
-                // }
+                for(int j = 0; j < 5; j++){
+                    if(test.cities[i].connections[j] != null){
+                        System.out.println(test.cities[i].connections[j].City.cityName + ", ");
+                    }
+                }
                 k++;
             }
         }

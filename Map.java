@@ -4,6 +4,9 @@ import java.io.FileReader;
 public class Map {
     public City[] cities;
     private final int mod = 541;
+    private int emptyfill = 0;
+    private int nothing1 = 0;
+    private int step = 0;
 
     public Map(String file) {
         cities = new City[mod];
@@ -53,7 +56,6 @@ public class Map {
             }
 
             City newCity = new City(cityName);
-            cities[hash(cityName)] = newCity;
             return newCity;
 
         }
@@ -61,13 +63,22 @@ public class Map {
 
     private void hashadd(City input) {
         int i = hash(input.cityName);
+
         if (cities[i] == null) {
             cities[i] = input;
+
         } else if (cities[i] == input) {
             return;
         } else {
             while (cities[i] != null) {
                 i++;
+                if (cities[i] == null) {
+                    cities[i] = input;
+                    return;
+
+                } else if (cities[i] == input) {
+                    return;
+                }
             }
             cities[i] = input;
         }

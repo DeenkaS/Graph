@@ -14,5 +14,6 @@ public class City{
         }
         connections[i] = new Connection(city, distance);
     }
+    //hejsan
 }
 

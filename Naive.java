@@ -3,9 +3,9 @@ public class Naive {
 
     public static void main(String[] args) {
         Map map = new Map("trains.csv");
-        String from = "Malmö";
-        String to = "Stockholm";
-        Integer max = Integer.valueOf(args[0]);
+        String from = "Göteborg";
+        String to = "Umeå";
+        Integer max = 800;
         long t0 = System.nanoTime();
         Integer dist = shortest(map.lookup(from), map.lookup(to), max);
         long time = (System.nanoTime() - t0) / 1_000_000;
@@ -25,7 +25,7 @@ public class Naive {
                 Integer distance = shortest(conn.City, to, max - conn.distanceInMinutes);
                 if((distance != null) && ((shrt == null) || (shrt > distance + conn.distanceInMinutes)))
                     shrt = distance + conn.distanceInMinutes;
-
+                
             }
         }
         return shrt;

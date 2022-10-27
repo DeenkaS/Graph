@@ -5,9 +5,8 @@ public class Paths {
     public static void main(String[] args) {
         Map map = new Map("trains.csv");
         String from = "Malmö";
-        String to = "Stockholm";
-        Paths path = new Paths();
-        Integer max = Integer.valueOf(1000000);
+        String to = "Kiruna";
+        Integer max = 5000;
         long t0 = System.nanoTime();
         Integer dist = shortest(map.lookup(from), map.lookup(to), max);
         long time = (System.nanoTime() - t0) / 1_000_000;
@@ -33,6 +32,10 @@ public class Paths {
                 Integer distance = shortest(conn.City, to, max - conn.distanceInMinutes);
                 if((distance != null) && ((shrt == null) || (shrt > distance + conn.distanceInMinutes)))
                     shrt = distance + conn.distanceInMinutes;
+
+                    if(conn.City == to && shrt<max){
+                        max = shrt;
+                    }
 
             }
         }
